@@ -1,7 +1,22 @@
+const getAverage = data => {
+    return data.reduce((sume, el) => sume + el, 0) / data.length;
+};
+
+const getAvgPerDay = allDayData => {
+    const allKeys = Object.keys(allDayData);
+    const avgPerDay = { x: [], y: [] };
+    for (let i = 0; i < allKeys.length; i++) {
+        const avg = getAverage(allDayData[allKeys[i]]);
+        avgPerDay.x.push(allKeys[i]);
+        avgPerDay.y.push(avg);
+    }
+    return avgPerDay;
+};
+
 export default function extractData(data, callback) {
     let sensorData = [];
     let timeData = [];
-    let averagePerDay = {};
+    let allDayData = {};
     Object.keys(data).map((key, index) => {
         if (Object.keys(data[key])[0] === "DevEUI_uplink") {
             let temp = data[key]["DevEUI_uplink"];
@@ -12,14 +27,15 @@ export default function extractData(data, callback) {
                     const date = new Date(temp["Time"]);
                     timeData.push(date);
                     const dateStr = date.toDateString();
-                    if (averagePerDay.hasOwnProperty(dateStr)) {
-                        averagePerDay[dateStr].push(sensorVal);
+                    if (allDayData.hasOwnProperty(dateStr)) {
+                        allDayData[dateStr].push(sensorVal);
                     } else {
-                        averagePerDay[dateStr] = [sensorVal];
+                        allDayData[dateStr] = [sensorVal];
                     }
                 }
             }
         }
     });
-    callback(timeData, sensorData, averagePerDay);
+    const avgPerDay = getAvgPerDay(allDayData);
+    callback(timeData, sensorData, avgPerDay);
 }

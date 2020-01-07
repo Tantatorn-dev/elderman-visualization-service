@@ -14,7 +14,8 @@ const useStyles = makeStyles(theme => ({
 
 const DustGraph = () => {
     const [data, setData] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [avgData, setAvgData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     const classes = useStyles();
 
@@ -25,9 +26,10 @@ const DustGraph = () => {
             .then(res => {
                 extractData(res, function(xData, yData, avgPerDay) {
                     let temp = { x: xData, y: yData };
+                    let tempAvg = { x: avgPerDay.x, y: avgPerDay.y };
                     setData(temp);
+                    setAvgData(tempAvg);
                     setIsLoading(false);
-                    console.log(avgPerDay);
                 });
             })
             .catch(error => {
@@ -41,32 +43,59 @@ const DustGraph = () => {
 
     return (
         <Container>
-            {data ? (
-                <Plot
-                    data={[
-                        {
-                            x: data.x,
-                            y: data.y,
-                            type: "scatter",
-                            mode: "lines+markers",
-                            marker: { color: "red" }
-                        }
-                    ]}
-                    layout={{
-                        width: 1000,
-                        height: 500,
-                        title: "PM2.5 data analyzing",
-                        xaxis: {
-                            title: "Date",
-                            showgrid: false,
-                            tickangle:90
-                        },  
-                        yaxis: {
-                            title: "PM 2.5 concentration",
-                            showline: true
-                        }
-                    }}
-                />
+            {!isLoading ? (
+                <div>
+                    {/* <Plot
+                        data={[
+                            {
+                                x: data.x,
+                                y: data.y,
+                                type: "scatter",
+                                mode: "lines+markers",
+                                marker: { color: "red" }
+                            }
+                        ]}
+                        layout={{
+                            width: 1000,
+                            height: 500,
+                            title: "PM2.5 data analyzing",
+                            xaxis: {
+                                title: "Date",
+                                showgrid: false,
+                                tickangle: 90
+                            },
+                            yaxis: {
+                                title: "PM 2.5 concentration",
+                                showline: true
+                            }
+                        }}
+                    /> */}
+                    <Plot
+                        data={[
+                            {
+                                x: avgData.x,
+                                y: avgData.y,
+                                type: "scatter",
+                                mode: "markers",
+                                marker: { color: "blue" }
+                            }
+                        ]}
+                        layout={{
+                            width: 1000,
+                            height: 500,
+                            title: "PM2.5 data analyzing",
+                            xaxis: {
+                                showgrid: false,
+                                tickangle: 90,
+                                showline: true
+                            },
+                            yaxis: {
+                                title: "PM 2.5 concentration (ug/m3)",
+                                showline: true
+                            }
+                        }}
+                    />{" "}
+                </div>
             ) : (
                 <div className={classes.root}>
                     <LinearProgress />
