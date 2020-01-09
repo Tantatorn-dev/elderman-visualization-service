@@ -91,7 +91,7 @@ export default function DustMap() {
         fetch('https://tgr2020-quiz2.firebaseio.com/quiz/sensor/team32.json')
             .then(res => res.json())
             .then(data => extractData(data))
-    }
+    },[]
     )
 
     return (
