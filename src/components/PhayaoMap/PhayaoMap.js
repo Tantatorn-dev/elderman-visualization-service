@@ -14,10 +14,10 @@ export default function PhayaoMap() {
             return 'team32'
         }
         else if (deviceID == 46) {
-            return 'team1'
+            return 'team11'
         }
         else if (deviceID == 45) {
-            return 'team2'
+            return 'team14'
         }
         else if (deviceID == 44) {
             return 'team29'
@@ -68,7 +68,8 @@ export default function PhayaoMap() {
                                 return (
                                     <Marker key={index} position={[item[0], item[1]]} >
                                         <Popup>
-                                            <span key={index}>{item[2]} µg/m3 {item[3]}</span>
+                                            <span key={index}><span style={{fontWeight:"bold"}}>team:</span> {item[3]}</span><br/>
+                                            <span key={index}><span style={{fontWeight:"bold"}}>PM2.5 value</span> {item[2]} µg/cubic meter</span><br/>
                                         </Popup>
                                     </Marker>
                                 )
