@@ -3,10 +3,11 @@ import './App.css';
 import NavigationBar from "./components/NavigatationBar/NavigationBar";
 import DustMap from "./components/DustMap/DustMap";
 import DustGraph from './components/DustGraph/DustGraph';
+import { useGlobal } from "reactn";
 
 function App() {
 
-  const [isOpen,setIsOpen] = useState([true,false])
+   const [isOpen, setIsOpen] = useGlobal('isOpen');
 
   const mux = (isOpen) =>{
     if(isOpen[0]){
