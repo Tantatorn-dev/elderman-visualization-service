@@ -37,15 +37,6 @@ export default function NavigationBar() {
         setIsToggle(open)
     }
 
-    const selectOpen = (index) => {
-        if (index == 0) {
-            setIsOpen({ isOpen: [true, false] })
-        }
-        else if (index == 1) {
-            setIsOpen({ isOpen: [false, true] })
-        }
-    }
-
     return (
         <AppBar position="static">
             <Toolbar>
@@ -65,11 +56,14 @@ export default function NavigationBar() {
                     onKeyDown={toggleDrawer(false)}
                 >
                     <List>
-                        <ListItem button onClick={()=>{setIsOpen([true, false])}}>
-                            <ListItemText primary="PM2.5 sensor line graph" />
+                        <ListItem button onClick={() => { setIsOpen([false, false, true]) }}>
+                            <ListItemText primary="Phayao Map" />
                         </ListItem>
-                        <ListItem button onClick={()=>{setIsOpen([false, true])}}>
+                        <ListItem button onClick={() => { setIsOpen([true, false, false]) }}>
                             <ListItemText primary="PM2.5 sensor data visual map" />
+                        </ListItem>
+                        <ListItem button onClick={() => { setIsOpen([false, true, false]) }}>
+                            <ListItemText primary="PM2.5 sensor line graph" />
                         </ListItem>
                     </List>
                 </div>

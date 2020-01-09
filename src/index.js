@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import { setGlobal } from "reactn";
 
 setGlobal({
-    isOpen:[true,false]
+    isOpen:[false,false,true]
 })
 
 ReactDOM.render(<App />, document.getElementById('root'));
