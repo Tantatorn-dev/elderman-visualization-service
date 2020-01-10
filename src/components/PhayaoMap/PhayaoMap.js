@@ -52,10 +52,10 @@ export default function PhayaoMap() {
         else if (currentPos == 2) {
             return 'วัดศรีโคมคำ'
         }
-        else if (currentPos == 1) {
+        else if (currentPos == 4) {
             return 'วัดอนาลโยทิพยาราม'
         }
-        else if (currentPos == 4) {
+        else if (currentPos == 1) {
             return 'ศาลหลักเมืองพะเยา'
         }
     }
