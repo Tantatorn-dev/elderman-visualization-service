@@ -46,10 +46,10 @@ export default function PhayaoMap() {
     const zoom = 10
 
     const checkCurrentPlace = (currentPos) => {
-        if (currentPos == 3) {
+        if (currentPos == 2) {
             return 'มหาวิทยาลัยพะเยา'
         }
-        else if (currentPos == 2) {
+        else if (currentPos == 3) {
             return 'วัดศรีโคมคำ'
         }
         else if (currentPos == 4) {
@@ -79,13 +79,13 @@ export default function PhayaoMap() {
         if (deviceID == 44) {
             return 'team32'
         }
-        else if (deviceID == 46) {
+        else if (deviceID == 47) {
             return 'team14'
         }
         else if (deviceID == 45) {
             return 'team29'
         }
-        else if (deviceID == 47) {
+        else if (deviceID == 46) {
             return 'team11'
         }
     }
