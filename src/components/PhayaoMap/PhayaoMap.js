@@ -10,14 +10,14 @@ const CurrentLocationCircle = ({ s }) => {
                 color="green"
                 fillColor="green"
                 radius={20} />)
-    if (s == 2)
+    if (s == 3)
         return (
             <CircleMarker
                 center={[19.156391,99.911908]}
                 color="green"
                 fillColor="green"
                 radius={20} />)
-    if (s == 3)
+    if (s == 2)
         return (
             <CircleMarker
                 center={[19.011294, 99.907926]}
