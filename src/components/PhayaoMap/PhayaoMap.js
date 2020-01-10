@@ -7,24 +7,28 @@ const CurrentLocationCircle = ({ s }) => {
         return (
             <CircleMarker
                 center={[19.021294, 99.897926]}
+                color="green"
                 fillColor="green"
                 radius={20} />)
     if (s == 2)
         return (
             <CircleMarker
                 center={[19.176477, 99.88926]}
+                color="green"
                 fillColor="green"
                 radius={20} />)
     if (s == 3)
         return (
             <CircleMarker
                 center={[19.177149, 99.812571]}
+                color="green"
                 fillColor="green"
                 radius={20} />)
     if (s == 4)
         return (
             <CircleMarker
                 center={[19.166391, 99.901908]}
+                color="green"
                 fillColor="green"
                 radius={20} />)
 }
@@ -173,10 +177,10 @@ export default function PhayaoMap() {
                 <CurrentLocationCircle s={currentPos} />
             </Map>
         </div>
-        <Typography style={{paddingTop:10}} component="h2" variant="display3" gutterBottom>
+        <Typography style={{paddingTop:10,fontFamily:"'Kanit', sans-serif"}} component="h2" variant="display3" gutterBottom>
             Sensor Event : {currentEvent}
         </Typography>
-        <Typography style={{paddingTop:5}} component="h2" variant="display3" gutterBottom>
+        <Typography style={{paddingTop:5,fontFamily:"'Kanit', sans-serif"}} component="h2" variant="display3" gutterBottom>
             Current Location : {checkCurrentPlace(currentPos)}
         </Typography>
         
